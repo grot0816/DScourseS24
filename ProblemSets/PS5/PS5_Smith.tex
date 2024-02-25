@@ -1,0 +1,39 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{PS5 Smith}
+
+\begin{document}
+\maketitle
+
+\section{Question 3 Response}
+I pulled data from a Wikipedia table that displayed the location of full Ironman races around the world. It includes some basic specifications of swim water type (fresh or salt water) and other criteria concerning wet suit legality and number of loops on the swim, bike and run courses. I pulled this information because my husband and I try to find one 'destination' race a year to travel for and then add on a vacation after the race. We can quickly filter some options out based on our preferences. For example, you absolutely won't find me swimming in oceans.
+
+I referenced this youtube \textbf{\href{https://www.youtube.com/watch?v=WeuAiqWlcu0}{link}} because I was having a hard time pulling the wikipedia table into R. Apparently wikipedia table selectors can be difficult sometimes, so this helped me troubleshoot how to pull the table content in correctly.
+\space
+
+\section{Question 4 Response}
+I used my FRED API key to pull the \textbf{\href{https://fred.stlouisfed.org/series/PCU3334133341}{data}} of the HVAC and Commercial Refrigeration Equipment Producer Price Index. I started down the path of retrieving gender workforce data from the US Bureau of Labor Statistics, but I found it was specifically focused on contractor/installation-based workforce, not the HVAC business as a whole. Instead, I refocused on the producer price index because I have heard a lot of casual talk during meetings that prices are 'coming back down' but this data would suggest that prices, while more stabilized, are still increasing, just at a much slower rate that between 2020 and 2022.
+
+I used the fredr R package to pull the data.
+\space
+
+
+
+
+
+
+
+\end{document}
