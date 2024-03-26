@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{float}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{PS7 Smith}
+
+\begin{document}
+\maketitle
+
+\section{Question 6 Answer and Data Summary}
+The missing log wage value is 25%. It's unlikely that the missing log wage is MCAR. It is likely Missing Not at Random (MNAR).
+
+\begin{table}[h!]
+\centering
+\footnotesize
+\begin{tabular}[T]{lrrrrrrr}
+\toprule
+& Unique & Missing Pct. & Mean & SD & Min & Median & Max\\
+\midrule
+logwage & 670 & 25 & \num{1.6} & \num{0.4} & \num{0.0} & \num{1.7} & \num{2.3}\\
+hgc & 16 & 0 & \num{13.1} & \num{2.5} & \num{0.0} & \num{12.0} & \num{18.0}\\
+tenure & 259 & 0 & \num{6.0} & \num{5.5} & \num{0.0} & \num{3.8} & \num{25.9}\\
+age & 13 & 0 & \num{39.2} & \num{3.1} & \num{34.0} & \num{39.0} & \num{46.0}\\
+logwage\_mean & 670 & 0 & \num{1.6} & \num{0.3} & \num{0.0} & \num{1.6} & \num{2.3}\\
+logwage\_pred & 1221 & 0 & \num{1.7} & \num{0.3} & \num{0.0} & \num{1.7} & \num{2.3}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Question 7 Answer and Data Summary}
+
+The estimated returns to schooling coefficient varies across the models, but none of them are close to the true value of .093:
+
+\begin{itemize}
+    \item Listwise deletion: 0.062
+    \item Mean imputation: 0.050
+    \item Impute with model 1 predictions: 0.062
+    \item Multiple imputation: 0.062
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{1}{c}{Listwise} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{Prediction} & \multicolumn{1}{c}{Multiple} \\
+& \multicolumn{1}{c}{deletion} & \multicolumn{1}{c}{imputation} & \multicolumn{1}{c}{imputation} & \multicolumn{1}{c}{imputation} \\
+\midrule
+(Intercept) & \num{0.534} & \num{0.708} & \num{0.534} & \num{0.534}\\
+& (\num{0.146}) & (\num{0.116}) & (\num{0.112}) & (\num{0.146})\\
+hgc & \num{0.062} & \num{0.050} & \num{0.062} & \num{0.062}\\
+& (\num{0.005}) & (\num{0.004}) & (\num{0.004}) & \vphantom{1} (\num{0.005})\\
+collegenot college grad & \num{0.145} & \num{0.168} & \num{0.145} & \num{0.145}\\
+& (\num{0.034}) & (\num{0.026}) & (\num{0.025}) & (\num{0.034})\\
+tenure & \num{0.050} & \num{0.038} & \num{0.050} & \num{0.050}\\
+& (\num{0.005}) & (\num{0.004}) & (\num{0.004}) & (\num{0.005})\\
+I(tenure\textasciicircum{}2) & \num{-0.002} & \num{-0.001} & \num{-0.002} & \num{-0.002}\\
+& (\num{0.000}) & (\num{0.000}) & (\num{0.000}) & (\num{0.000})\\
+age & \num{0.000} & \num{0.000} & \num{0.000} & \num{0.000}\\
+& (\num{0.003}) & (\num{0.002}) & (\num{0.002}) & (\num{0.003})\\
+marriedsingle & \num{-0.022} & \num{-0.027} & \num{-0.022} & \num{-0.022}\\
+& (\num{0.018}) & (\num{0.014}) & (\num{0.013}) & (\num{0.018})\\
+\midrule
+Num.Obs. & \num{1669} & \num{2229} & \num{2229} & \num{1669}\\
+Num.Imp. & & & & \num{5}\\
+R2 & \num{0.208} & \num{0.147} & \num{0.277} & \num{0.208}\\
+R2 Adj. & \num{0.206} & \num{0.145} & \num{0.275} & \num{0.206}\\
+AIC & \num{1179.9} & \num{1091.2} & \num{925.5} & \\
+BIC & \num{1223.2} & \num{1136.8} & \num{971.1} & \\
+Log.Lik. & \num{-581.936} & \num{-537.580} & \num{-454.737} & \\
+F & \num{72.917} & \num{63.973} & \num{141.686} & \\
+RMSE & \num{0.34} & \num{0.31} & \num{0.30} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All of the models, with exception of the mean imputation were close in their estimates of .062. However, the answers are not close to actual. While they provide an estimate, they're not accurate. This could be because the data that is provided doesn't provide the right information to accurately predict the missing data
+
+\section{Question 8}
+For the final project, I've laid out the draft template for each of the graded sections. I've also gotten with the IT department to gain access to the last five to six years of data (instead of just the running last 365 days). It's important that I look further back because the time between initial quotation to actually shipping product can be 6 - 18 months, depending on whether the project is new construction or renovations.
+
+I'm able to easily identify when a quote converts to an order, and the subset of that which is whether a special discount (called and FPA) was applied.
+
+I have figured out that I will have to do some data clean up to remove duplicate jobs, such as pricing up the same job with and without a product option. Counting both of those as separate jobs could skew the data.
+
+In addition to the internal company data mentioned above, I plan to reference the AHRI market share data. This is data provided to all HVAC members monthly and quarterly that shows your company's overall market share details. By being a member, every company is required to report their monthly job bookings and shipments. I also will try to incorporate the HVAC PPV from FRED, but I'm not quite sure how that will tie in with the internal data yet.
+
+After discussing with you further, I'll be using a linear model approach to model the relationship between special discount requests and closing the job. I might focus that to see if there are stronger relationships in certain regions of the country or time of year.
+
+
+
+\end{document}
