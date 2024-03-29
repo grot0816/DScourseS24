@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{float}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{PS8 Smith}
+\begin{document}
+\maketitle
+
+\section{Question 5 Response}
+beta-OLS closed form prints values are that very close to original beta. Rounding to the second decimal provides the same results are original beta.
+
+\begin{table}[h!]
+\centering
+\footnotesize
+\begin{tabular}[T]{lrrrrrrr}
+\toprule
+& Unique & Missing Pct. & Mean & SD & Min & Median & Max\\
+\midrule
+logwage & 670 & 25 & \num{1.6} & \num{0.4} & \num{0.0} & \num{1.7} & \num{2.3}\\
+hgc & 16 & 0 & \num{13.1} & \num{2.5} & \num{0.0} & \num{12.0} & \num{18.0}\\
+tenure & 259 & 0 & \num{6.0} & \num{5.5} & \num{0.0} & \num{3.8} & \num{25.9}\\
+age & 13 & 0 & \num{39.2} & \num{3.1} & \num{34.0} & \num{39.0} & \num{46.0}\\
+logwage\_mean & 670 & 0 & \num{1.6} & \num{0.3} & \num{0.0} & \num{1.6} & \num{2.3}\\
+logwage\_pred & 1221 & 0 & \num{1.7} & \num{0.3} & \num{0.0} & \num{1.7} & \num{2.3}\\
+\bottomrule
+\end{tabular}
+\end{table}
+\section{Question 7 Response}
+The results using lbfgs come very close to original beta. Very similar results provided from closed form OLS analysis. The Nelder-Mead method results vary greatly and are not close compared to the other methods.
+\section{Question 9 Response and lm Summary table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}[t]{lc}
+\toprule
+  & (1)\\
+\midrule
+X1 & \num{1.501}\\
+ & \vphantom{9} (\num{0.002})\\
+X2 & \num{-1.001}\\
+ & \vphantom{8} (\num{0.002})\\
+X3 & \num{-0.252}\\
+ & \vphantom{7} (\num{0.002})\\
+X4 & \num{0.749}\\
+ & \vphantom{6} (\num{0.002})\\
+X5 & \num{3.501}\\
+ & \vphantom{5} (\num{0.002})\\
+X6 & \num{-2.001}\\
+ & \vphantom{4} (\num{0.002})\\
+X7 & \num{0.499}\\
+ & \vphantom{3} (\num{0.002})\\
+X8 & \num{1.003}\\
+ & \vphantom{2} (\num{0.002})\\
+X9 & \num{1.247}\\
+ & \vphantom{1} (\num{0.002})\\
+X10 & \num{2.001}\\
+ & (\num{0.002})\\
+\midrule
+Num.Obs. & \num{100000}\\
+R2 & \num{0.991}\\
+R2 Adj. & \num{0.991}\\
+AIC & \num{145143.6}\\
+BIC & \num{145248.3}\\
+Log.Lik. & \num{-72560.811}\\
+RMSE & \num{0.50}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results of the lm OLS are once again very close to original beta. Rounding to two decimal places results in the same original values of beta.
+
+
+\end{document}
