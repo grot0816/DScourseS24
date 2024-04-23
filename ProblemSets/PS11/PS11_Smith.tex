@@ -1,0 +1,259 @@
+\documentclass[12pt,english]{article}
+\usepackage{mathptmx}
+
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{darkblue}{RGB}{0.,0.,139.}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{lipsum}
+\usepackage{enumitem}
+
+\usepackage[authoryear]{natbib}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage[flushleft]{threeparttable}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{pdflscape}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 0},backref=false,
+ colorlinks,citecolor=black,filecolor=black,
+ linkcolor=black,urlcolor=black]
+ {hyperref}
+\usepackage[all]{hypcap} % Links point to top of image, builds on hyperref
+\usepackage{breakurl}    % Allows urls to wrap, including hyperref
+\linespread{2}
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bibliography.bib}
+
+
+\begin{document}
+
+\begin{singlespace}
+\title{Maximizing Sales Performance: An Empirical Analysis of Strategic Discounting}
+\end{singlespace}
+
+\author{Monica Smith\thanks{Department of Economics, University of Oklahoma.\
+Email:~\href{mailto:student.name@ou.edu}{monica.a.smith-1@ou.edu}}}
+
+% \date{\today}
+\date{date: the future}
+
+\maketitle
+
+\begin{abstract}
+\begin{singlespace}
+A short summary of what question the project answers, what methods are used, and any policy or business implications from the findings.
+
+
+this should not take more than one page
+\end{singlespace}
+
+\end{abstract}
+\vfill{}
+
+\newpage
+\section{Introduction}
+
+In the complex world of commercial HVAC (Heating, Ventilation, and Air Conditioning) equipment sales, the path from manufacturer to end-user is not straightforward. The sales process involves multiple layers of transactions, starting with the manufacturer and ending with the property owner. As a manufacturing company, the primary points of influences lie in determining unique or exclusive product options and the sell price to the Manufacturing Sales Representative Offices (Reps). The sell price is typically published on quantity or dollar discount levels – the higher the number of units ordered, the more favorable the discount. 
+
+However, not every aspect of securing a job can be automated or reduced to a simple formula. The human element, particularly the interaction between the internal Sales team and the Reps, plays a crucial role in successfully closing deals. This paper aims to analyze and provide data-driven evidence to support the hypothesis that the probability of securing an order increases when further negotiations on discounted prices are conducted as the monetary value of the job rises.
+
+Research on pricing strategies in the commercial HVAC industry appears to be very limited. Unlike in a retail sales environment, access to competitor pricing is not readily available. Accordingly, the primary source of data in this analysis is dependent upon my company's historical and current internal quotation and sales information. The focus of data is narrowed to the last five years due to the drastic changes in market dynamics during this period. Examining data from earlier years could potentially skew the analysis, as the market conditions and factors influencing pricing strategies have undergone significant shifts in recent years. 
+
+By examining the relationship between discounted pricing negotiations, and the size of the job, this research seeks to shed light on the importance of human interaction in the complex sales process within the commercial HVAC industry. The findings of this study may have implications for sales strategies, resource allocation, and the overall understanding of the dynamics between manufacturers and Reps in this sector.
+
+\section{Literature Review}
+
+\textbf{HVAC Industry Sales Channel Insights}
+There is very little research available concerning the topic of quote to order conversion within the HVAC industry. Unlike in other areas of business, such as the consumer retail market, the sell price for HVAC equipment is never externally published. For example, retailers such as Home Depot have access to competitive prices and product offerings from Lowes or Ace Hardware to benchmark against their offering. This is not the case in commercial HVAC sales. This is due to the many layers the product is sold through before final installation in a commercial building such as a hotel, office building, or hospital. 
+
+Image 1\cite{1} provides a simple visual to demonstrate the sales channel process. To begin, an HVAC equipment manufacturer sells the product to a Rep. The Rep then bundles the manufacturer's equipment with other HVAC system equipment such as duct-work, chillers and boilers and sells the bundle to the mechanical contractor. At that point, the manufacturer loses visibility to the sale price of just their piece of the bundle. The mechanical contractor then bundles all the mechanical equipment plus install labor and sells to the General Contractor, who then pulls in the other trades such plumbing, carpentry and electrical for a final bids to the Property Owner. 
+
+\textbf{HVAC Governing Organization}
+The AHRI (Air-Conditioning, Heating and Refrigeration Institute) is a North American member-driven organization that offers HVAC performance standards, government advocacy and product certification process. An important aspect of being a member is the monthly and quarterly market share reports. "AHRI acts as an impartial central agency for gathering individual company data and distributing it in summaries covering bookings, unit shipments, sales volume, manufacturer inventories, exports, efficiencies, and market information on trading area sales" \cite{2}. All members are required to report their product sales and bookings. Consequently, these reports offer insights into average sell price of the industry compared to your individual company and also provides market share by state and county level in both units and dollars. This report offers insightful indicators into a company's pricing strategy at compared to the market.
+
+Due to the proprietary nature of the company's AHRI-member reports, the data and figures cannot be disclosed or reproduced in this research. However, by analyzing the data at a state level, I aim to identify trends in order conversion rates and pinpoint states or counties with significant market growth potential. This information will be used to provide our Sales Managers and Representatives with data-driven insights to support their negotiations with Sales Offices in those territories. 
+
+
+\section{Data}
+The data cleaning process focused on analyzing internal job quote and order data from Climate Control Group's order software.\cite{3} The primary areas of interest are net sales dollars for each quote, whether a discount was applied through "FPA" (Factory Pricing Authorization), and the metric that converts a quote to an order based on the "AP"  (Approved) quote status. The dataset spans a period of five years, ending on March 31, 2024. To maintain the integrity of company data privacy, I removed several variables not integral to the analysis. including Project Name, Sales Rep Office, and corresponding internal user names and contact information. Some other data columns for internal notes and tracking were also removed.
+
+I applied some additional filters to remove quotes identified as a duplicate and if the total quote amount equaled zero, as this implied an override of the sales price due to warranty replacement or internal-company orders. Additionally, I removed customer codes relating to OEM (Original Equipment Manufacturer) or lead times relating to Aftermarket Parts or  ‘Quick Ship’ because those jobs utilize a different pricing structure and are not available for any discounts.
+
+Finally,  I created two new categorical variables based on existing columns. The first, "Order", is derived from the QT Approval Status Code, where "AP" is categorized as "Ordered" and everything else as "Not Ordered". The second, "Discount", is based on the FPA Status column, where quotes that received a discount were categorized as "Applied", and everything else as "Not Applied".
+
+With the appropriate data cleaning complete, I made the Total Quote Amount variable discrete by defining dollar tiers: "<\$50k", "\$50k-99k", "\$100k - 199k", "\$200k - 299k", "\$300k - 399k", "\$400k - 499k", and "\$500k+". These dollar tiers loosely follow the company quantity discount tier levels.  I then aggregated the data by dollar tier, Discount, and Order, calculating the sum of the Total Quote Amount for each unique combination of these variables.
+
+I created four unique categories to ultimately assist in the order conversion rate analysis:
+\begin{enumerate}[itemsep=0pt, topsep=0pt, partopsep=0pt, parsep=0pt]
+    \item Discount Not Applied + Not Ordered
+    \item Discount Applied + Not Ordered
+    \item Discount Not Applied + Ordered
+    \item Discount Applied + Ordered
+\end{enumerate}
+
+Finally, the conversion rates were calculated for each dollar tier. I computed each category conversion rate utilizing the following formula.
+
+Quote Conversion to Order
+\begin{equation}
+\text{Order Conversion} = \frac{\sum \text{Total \$ Ordered }}{\sum \text{Total \$ Quoted}}
+\end{equation}
+
+\section{Empirical Methods}
+
+For this analysis, I calculated the conditional probability analysis for Order conversion, given Discount and the break out the dollar amount of the quote.
+
+Probability of Order Conversion, given Discount and Dollar Tier
+\begin{equation}
+P(\text{Order Conversion} \mid \text{Discount}, \text{Dollar Tier}) = \frac{P(\text{Order Conversion} \cap \text{Discount} \cap \text{Dollar Tier})}{P(\text{Discount} \cap \text{Dollar Tier})}
+\end{equation}
+
+I developed a logistic regression model to predict the probability of a quote being ordered based on the discount status and the tier of the total quote amount. The dependent variable is a binary indicator, y, which takes the value of 1 if the quote is ordered and 0 otherwise. The independent variables are the discount status (Discount) and the tier of the total quote amount (tier).
+The logistic regression model is specified as follows:
+\[
+\log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 \times \text{Discount} + \beta_2 \times \text{tier}
+\]
+
+where p is the probability of a quote being ordered, and $\beta_0$, $\beta_1$, and $\beta_2$ are the coefficients to be estimated.
+
+Estimation:
+The dataset is split into training and test sets using an 80:20 ratio. The model is trained on the training set using the glm function in R, specifying the binomial family for logistic regression. The model's performance is evaluated on the test set by comparing the predicted order status (using a threshold of 0.8) with the actual order status. The accuracy of the model is calculated as the proportion of correct predictions.
+
+In this approach, I directly estimate the probabilities of the event occurring using the linear probability model. 
+
+\textbf{{Interpreting Model Evaluation and Coefficients}}
+
+The evaluation of the logistic regression model involves assessing its goodness-of-fit and predictive performance. The model summary provides valuable information, including:
+\begin{itemize}
+  \item The estimated coefficients ($\beta$) and their standard errors, which quantify the strength and direction of the relationships between the independent variables and the log-odds of the outcome.
+  \item The z-values and corresponding p-values, which indicate the statistical significance of the coefficients.
+  \item The deviance statistics and the Akaike Information Criterion (AIC), which measure the overall fit of the model to the data and allow for model comparison.
+\end{itemize}
+
+Additionally, the interpretation of the linear coefficient variables involves examining their magnitudes and signs. A positive coefficient suggests that an increase in the corresponding independent variable is associated with an increase in the log-odds of the outcome, while a negative coefficient indicates the opposite relationship. The magnitude of the coefficient represents the change in the log-odds for a one-unit change in the independent variable, holding other variables constant.
+
+\section{Research Findings}
+
+The analysis reveals that applying discounts generally leads to an increase in the conversion rate of orders. A simplified conditional probability, as defined below, 
+
+Probability of Order Conversion, given Discount:
+\begin{equation}
+P(\text{Order Conversion} \mid \text{Discount}) = \frac{P(\text{Order Conversion} \cap \text{Discount})}{P(\text{Discount})}
+\end{equation}
+
+As shown in Table 1 Frequency Table, the conversion rate for the total business increases by XXX percentage points when a discount is applied compared to when no discount is offered. This finding aligns with the common understanding that discounts can be an effective tool to encourage customers to make a purchase.
+****need to insert Model 1 results****
+
+To improve the estimated probability, I expanded the model to include Discount and Dollar tier.
+The results of the model are found in Table 2. 
+    \begin{itemize}
+        \item Intercept: The intercept represents when the discount is applied (reference category) and the tier is "\$100k - 199k" (reference category), the expected value of the dependent variable is 0.4590.
+        \item Discount Not Applied: Compared to the reference category (Discount Applied), when the discount is not applied, the expected value of the dependent variable decreases by 0.3785. This coefficient is statistically significant (p < 0.0001).
+        \item Tier \<\$50k: Compared to the reference category, when the tier is "\<\$50k", the expected value of the dependent variable increases by 0.1260. This coefficient is statistically significant (p < 0.0001).
+        \item Tier \$50k-99k: Compared to the reference category, the expected value of the dependent variable increases by 0.0505. This coefficient is statistically significant (p = 0.0038).
+        \item Tier \$200k - 299k: Compared to the reference category, the expected value of the dependent variable decreases by 0.0340. However, this coefficient is not statistically significant (p = 0.1459). ****This doesn't make sense to me*****
+        \item Tier \$300k - 399k: Compared to the reference category, the expected value of the dependent variable decreases by 0.0360. However, this coefficient is not statistically significant (p = 0.2306). ****also doesn't make sense****
+        \item Tier \$400k - 499k: Compared to the reference category, the expected value of the dependent variable decreases by 0.0610. This coefficient is marginally significant (p = 0.0627).
+    \end{itemize}
+
+    
+\textbf{Conversion Rates across Dollar Tiers \textit{without} Discounts}
+
+Figure 2 and Table 3 can be referenced to supplement the balance of research findings.The conversion rate for orders without a discount is highest in the lowest dollar tier (\<\$50,000) at 16.6 percent. However, as the dollar amount increases, the conversion rate decreases, reaching a low of 0.8 percent for orders over \$500,000. This suggests that as the financial commitment increases, Reps are less successful in securing an order without any additional financial support from the manufacturer.
+
+The analysis reveals a threshold in the \$100,000 to \$199,999 dollar tier where the conversion rates for orders with and without discounts are nearly identical. This suggests that up to that dollar level, the sales team should not prioritize offering discounts, as quotes tend to convert to orders even without additional discounts. This insight can help optimize resource allocation and focus the sales team's efforts on higher-value opportunities.
+
+\textbf{Conversion Rates across Dollar Tiers \textit{with} Discounts}
+
+In contrast to the trend observed in orders without discounts, the conversion rates for orders with discounts exhibit a different and insightful pattern. The conversion rate is lowest in the small dollar tier (<\$50,000) at 1.9 percent. Interestingly, the conversion rate reaches its peak of 8.7 percent in the \$300,000 to \$399,999 dollar tier before starting to decline again. This finding indicates that discounts have a more pronounced impact on conversion rates in the mid-range dollar tiers.
+
+The data strongly suggests that the primary focus for strategic discounting should be on projects in the \$250,000 to \$400,000 range. Within these two dollar tiers, the application of discounts results in a substantial increase in conversion rates, with improvements of 5.3 and 5.4 percentage points, respectively. By identifying projects in the quotation phase within this range and actively coordinating with the Reps to offer targeted discounts, the sales team can maximize the impact of their time and discounting efforts.
+
+\textbf{Ineffectiveness of Pursuing High-Value Projects}
+
+Surprisingly, the analysis reveals that projects in the largest dollar tier of \$500,000+ have conversion rates similar to those in the lowest dollar tier (<\$50,000), despite the significant financial value they represent. This finding challenges could challenge the common notion that pursuing high-value deals, or "hunting for the whale," is the most effective use of the sales team's resources. The data suggests that focusing on mid-range projects with strategic discounting may yield better results in terms of conversion rates.
+
+\section{Conclusion}
+Quit acting a fool and spending time chasing jobs that don't need additional focus. 
+
+Not all quotes and not all projects are created equally, nor should they each receive the same level attention from the sales team and Reps. The sales team should be identifying the job opportunities within the that \$250k-\$400k range. That job list should be reviewed with the pricing team to determine what acceptable ranges they can discount to help the Rep offices secure the business against competitors. Of course, we should not offer discounts just to offer discounts, but the sales team is prepared and armed with data and communicating with the rep offices to make strategic bidding decisions.
+
+
+\newpage
+
+\printbibliography
+
+\newpage
+%========================================
+% FIGURES AND TABLES 
+%========================================
+\section*{Figures and Tables}\label{sec:figTables}
+\addcontentsline{toc}{section}{Figures and Tables}
+%----------------------------------------
+% Figure 1
+%----------------------------------------
+\begin{figure} [ht]
+    \centering
+    \includegraphics[width=1\linewidth]{CCG_CommercialHVACSalesProcess_2024.pdf}
+    \caption{Commercial Construction Product Journey}
+    \label{fig:enter-label}
+\end{figure}
+
+%----------------------------------------
+% Table 1
+%----------------------------------------
+
+%----------------------------------------
+% Table 2
+%----------------------------------------
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 0.4590 & 0.0182 & 25.19 & 0.0000 \\ 
+  Discount Not Applied & -0.3785 & 0.0147 & -25.69 & 0.0000 \\ 
+  Tier $<$\$50k & 0.1260 & 0.0137 & 9.19 & 0.0000 \\
+  Tier \$50k-99k & 0.0505 & 0.0174 & 2.90 & 0.0038 \\
+  Tier \$200k - 299k & -0.0340 & 0.0234 & -1.45 & 0.1459 \\ 
+  Tier \$300k - 399k & -0.0360 & 0.0300 & -1.20 & 0.2306 \\ 
+  Tier \$400k - 499k & -0.0610 & 0.0328 & -1.86 & 0.0627 \\ 
+  Tier \$500k+ & -0.1052 & 0.0219 & -4.81 & 0.0000 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+%----------------------------------------
+% Figure 2
+%----------------------------------------
+\begin{figure}[htb]
+        \centering
+        \includegraphics[width=1\linewidth]{Conversion_Rate_by_Dollar_Bucket.png}
+        \caption{Order Conversion Rate by Discount Application and Dollar Tier}
+    \label{fig:fig1}
+\end{figure}
+%----------------------------------------
+% Table 3
+%----------------------------------------
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{dollar_table.png}
+    \caption{Order Conversion Rate by Discount Application and Dollar Tier Data - Dollars displayed in Millions}
+    \label{fig:enter-label}
+\end{figure}
+
+\end{document}
