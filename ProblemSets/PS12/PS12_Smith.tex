@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tabularray}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{codehigh}
+\usepackage[normalem]{ulem}
+\UseTblrLibrary{booktabs}
+\UseTblrLibrary{siunitx}
+\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
+\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
+\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{PS12 Smith}
+\begin{document}
+\maketitle
+
+\section{Question 6 Response}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 1.5839 & 0.0420 & 37.75 & 0.0000 \\ 
+  college1 & 0.1554 & 0.1003 & 1.55 & 0.1215 \\ 
+  exper & 0.0141 & 0.0063 & 2.24 & 0.0253 \\ 
+  married1 & -0.0538 & 0.0360 & -1.49 & 0.1357 \\ 
+  kids & 0.0812 & 0.0352 & 2.31 & 0.0212 \\ 
+  union1 & -0.0622 & 0.0708 & -0.88 & 0.3798 \\ 
+   \hline
+\end{tabular}
+\end{table}
+Experience and kids are statistically significant, but the other variables are not.
+
+The logwage is missing 30.69 percent of the time. This data is likely MNAR. The other variables have data but income just might not have been reported for that individual (either by choice, or perhaps that individual did not have an income to report) in the data.
+
+\section{Question 7 Response}
+See Model summary at the end of the PDF.
+Within hgc, the heckman selection is the worst predictor compared to the actual .091. I suppose this isn't surprising since the Heckman selection which sets the missing values equat to zero instead of trying to estimate a value. In the Complete Cases model, all the missing values are removed, so the number of observation is smallest. However, the coefficient is the closest to actual at a .059 and measures the best significance level at .009. The Mean imputation estimates the missing value, so it has the same number of observations as the Heckman Selection. It's less accurate in prediction compared to the Complete Cases at a .036 value, but it is still significant. At least in this instance, dropping the missing variables seems to be the most appropriate estimator.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Modelsummary1.PNG}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Modelsummary2.PNG}
+\end{figure}
+
+\section{Question 9 Response}
+Average predicted probability (original model) is: 0.2373394
+Average predicted probability (counterfactual policy): 1.616075
+
+The results of the counterfactual policy do not make sense, since a probability should be between 0 and 1. Setting the other coefficients to zero does not work in this analysis. This suggests that the other variables  do have some type of relationship to the union variable.
+
+\end{document}
